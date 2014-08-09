@@ -14,7 +14,7 @@ class ApiController < ApplicationController
         elsif params[:id] == "receivetext"
             render :json => Api.new.receivetext(params['From'], params['Body']) #TODO: configure twilio to route here
         elsif params[:id] == "sendemail"
-            render :plain => Api.new.sendemail(params[:to], params[:msg])
+            render :plain => Api.new.sendemail(params[:to], params[:subject], params[:msg])
         end
     end
 end

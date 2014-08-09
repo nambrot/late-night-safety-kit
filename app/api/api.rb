@@ -87,7 +87,8 @@ class Api
                 subject: subject,
                 text: message,
                 api_key: 'password1!'
-            });
+            }
+        );
     end
 
 
