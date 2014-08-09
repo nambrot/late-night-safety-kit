@@ -3,12 +3,14 @@
 
 window.DynamicMapComponent = React.createClass
   componentDidMount: ->
-    map = L.map @refs.mapEl.getDOMNode()
+    @map = L.map @refs.mapEl.getDOMNode()
       .setView([42.3581,-71.0636], 10)
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map)
+    }).addTo(@map)
+  componentDidUpdate: ->
+    @map.invalidateSize()
   render: ->
     (div id: 'dynamic-map-component', className: (if @props.visible then 'visible' else 'not-visible'),
     (div className: "map", ref: 'mapEl', style: { height: '500' }))
