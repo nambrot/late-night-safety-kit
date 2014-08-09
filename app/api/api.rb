@@ -44,5 +44,16 @@ class Api
         return stops
     end
 
+    #harcdode a bunch of cab numbers and companies
+    def cab_numbers()
+        numbers = Array.new
+        number = Struct.new(:company, :number)
+        numbers.push(number.new("Metro Cab", "617-782-5500"))
+        numbers.push(number.new("Boston Cab Association", "617-536-3200"))
+        numbers.push(number.new("ITOA Cab Associates", "617-825-4000"))
+        numbers.push(number.new("617TaxiCab", "617-829-4222"))
+        return numbers
+    end
+
 
 end
