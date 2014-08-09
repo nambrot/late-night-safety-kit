@@ -31,7 +31,7 @@ window.MainComponent = React.createClass
   render: ->
     (div id: "main-component", [
       (header id: "main-component-header", [
-        (a className: 'back-botton', href: '/', onClick: @navigateLink) unless @state.page is 'index'
+        (a className: 'back-botton', href: '/', onClick: @navigateLink, "<") unless @state.page is 'index'
         (h1 {}, @getTitleText())
         ])
       ].concat([

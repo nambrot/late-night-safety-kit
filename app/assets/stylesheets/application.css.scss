@@ -32,15 +32,17 @@
   text-align: center;
 
   .back-botton {
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     display: inline-block;
-    left: 18px;
-    top: 17px;
-    @include transform(rotateZ(45deg));
+    left: 13px;
+    top: 11px;
+    padding: 4px;
+    line-height: 17px;
+    border: 1px solid blue;
+    border-radius: 19px;
     position: absolute;
-    border-left: 1px solid blue;
-    border-bottom: 1px solid blue;
+    color: blue;
   }
 }
 
