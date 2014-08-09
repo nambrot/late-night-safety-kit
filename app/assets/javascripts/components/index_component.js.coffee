@@ -11,7 +11,7 @@ window.IndexComponent = React.createClass
         (ul {}, [
           (a href: "/map", onClick: @navigateLink, (li {}, "Check the Area")),
           (a href: "/report", onClick: @navigateLink, (li {}, "Something Happened To Me")),
-          (a href: "/map", onClick: @navigateLink, (li {}, "Check on Me"))
+          (a href: "/homewalker", onClick: @navigateLink, (li {}, "HomeWalker (TM)"))
           ])
         ])
       ])
