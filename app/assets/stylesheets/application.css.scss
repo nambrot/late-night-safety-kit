@@ -30,6 +30,18 @@
   width: 100%;
   border-bottom: 1px solid #aaa;
   text-align: center;
+
+  .back-botton {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    left: 18px;
+    top: 17px;
+    @include transform(rotateZ(45deg));
+    position: absolute;
+    border-left: 1px solid blue;
+    border-bottom: 1px solid blue;
+  }
 }
 
 #index-page {
