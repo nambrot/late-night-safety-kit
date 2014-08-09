@@ -12,4 +12,23 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
+
+@import "foundation_and_overrides.scss";
+@import "bourbon";
+
+
+#main-component {
+  @include grid-column(12);
+}
+
+#main-component-header {
+  @include grid-column(12);
+  border-bottom: 1px solid #aaa;
+}
+
+a {
+  display: block;
+}
