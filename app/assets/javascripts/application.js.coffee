@@ -21,3 +21,4 @@
 $ ->
   $(document).foundation()
   React.renderComponent (MainComponent {}), document.getElementById('container')
+  Backbone.history.start pushState: true, trigger: true
