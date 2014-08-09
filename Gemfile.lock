@@ -134,13 +134,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  httparty
   awesome_print
   better_errors
   binding_of_caller
   bourbon
   coffee-rails
   foundation-rails
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.4)

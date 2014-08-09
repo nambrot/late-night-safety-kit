@@ -17,6 +17,7 @@ gem 'foundation-rails'
 gem 'awesome_print'
 gem 'binding_of_caller'
 gem 'better_errors'
+gem 'leaflet-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
