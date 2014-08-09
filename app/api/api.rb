@@ -1,6 +1,3 @@
-require 'twilio-ruby'
-require 'sendgrid'
-
 class Api
     #get recent crime data
     def crimes()
