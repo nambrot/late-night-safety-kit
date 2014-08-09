@@ -20,10 +20,10 @@ class Api
         resp = Net::HTTP.get_response(URI.parse(source))
         data = resp.body
         police_stations = Array.new
-        station = Struct.new(:latitude, :longitude, :address)
+        station = Struct.new(:latitude, :longitude, :address, :name)
         JSON.parse(data).each do |item|
             human_address = JSON.parse(item["location"]["human_address"])
-            police_stations.push(station.new(item['location']['latitude'], item['location']['longitude'], human_address["address"]))
+            police_stations.push(station.new(item['location']['latitude'], item['location']['longitude'], human_address["address"], item['name']))
         end
         return police_stations
     end
