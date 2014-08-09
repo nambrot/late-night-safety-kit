@@ -3,15 +3,12 @@
 class Router extends Backbone.Router
 
   routes:
-    'map': 'map'
     '(/)': 'index'
-    '*notFound': 'notFound'
-  notFound: ->
-    @trigger 'routing', 'notFound'
+    '*page': 'page'
   index: ->
     @trigger 'routing', 'index'
-  map: ->
-    @trigger 'routing', 'map'
+  page: (page) ->
+    @trigger 'routing', page
 
 window.MainComponent = React.createClass
   getInitialState: ->
@@ -28,12 +25,11 @@ window.MainComponent = React.createClass
     switch @state.page
       when 'index'
         (div id: 'index-page', [
-          
           (a href: "/map", onClick: @navigateLink, (StaticMapComponent {})),
           (nav id: 'index-page-nav', [
             (ul {}, [
               (a href: "/map", onClick: @navigateLink, (li {}, "Check the Area")),
-              (a href: "/map", onClick: @navigateLink, (li {}, "Something Happened To Me")),
+              (a href: "/report", onClick: @navigateLink, (li {}, "Something Happened To Me")),
               (a href: "/map", onClick: @navigateLink, (li {}, "Check on Me"))
               ])
             ])
@@ -44,6 +40,8 @@ window.MainComponent = React.createClass
           (a href: "/", onClick: @navigateLink, "Go To Index"),
           (DynamicMapComponent {})
           ])
+      when 'report'
+        (ReportComponent {})
   render: ->
     (div id: "main-component", [
       (header id: "main-component-header", [
