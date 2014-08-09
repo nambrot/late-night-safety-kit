@@ -13,6 +13,7 @@ class Router extends Backbone.Router
 window.MainComponent = React.createClass
   getInitialState: ->
     page: 'index'
+    view: (IndexComponent {})
   componentWillMount: ->
     @router = new Router()
     @router.on 'routing', (action) =>
@@ -20,32 +21,20 @@ window.MainComponent = React.createClass
   navigateLink: (evt) ->
     @router.navigate evt.currentTarget.pathname, trigger: true
     return false
-  
+  getCurrentComponent: ->
+    @refs[@state.page]
+  getTitleText: ->
+    return @getCurrentComponent().getTitleText() if @getCurrentComponent() and @getCurrentComponent().getTitleText
+    return "Late Night Safety Kit"
   renderPage: ->
-    switch @state.page
-      when 'index'
-        (div id: 'index-page', [
-          (a href: "/map", onClick: @navigateLink, (StaticMapComponent {})),
-          (nav id: 'index-page-nav', [
-            (ul {}, [
-              (a href: "/map", onClick: @navigateLink, (li {}, "Check the Area")),
-              (a href: "/report", onClick: @navigateLink, (li {}, "Something Happened To Me")),
-              (a href: "/map", onClick: @navigateLink, (li {}, "Check on Me"))
-              ])
-            ])
-          ])
-        
-      when 'map'
-        (div {}, [
-          (a href: "/", onClick: @navigateLink, "Go To Index"),
-          (DynamicMapComponent {})
-          ])
-      when 'report'
-        (ReportComponent {})
+    @state.view
   render: ->
     (div id: "main-component", [
       (header id: "main-component-header", [
-        (h1 {}, "Late Night Safety Kit")
-        ]),
-      @renderPage()
-      ])
+        (h1 {}, @getTitleText())
+        ])
+      ].concat([
+        (IndexComponent visible: (@state.page is 'index'), ref: 'index'),
+        (DynamicMapComponent visible: (@state.page is 'map'), ref: 'map'),
+        (ReportComponent visible: (@state.page is 'report'), ref: 'report')
+        ]))

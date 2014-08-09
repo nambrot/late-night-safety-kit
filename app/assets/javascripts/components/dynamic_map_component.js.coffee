@@ -10,4 +10,5 @@ window.DynamicMapComponent = React.createClass
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map)
   render: ->
-    (div className: "map", ref: 'mapEl', style: { height: '500' })
+    (div id: 'dynamic-map-component', className: (if @props.visible then 'visible' else 'not-visible'),
+    (div className: "map", ref: 'mapEl', style: { height: '500' }))
