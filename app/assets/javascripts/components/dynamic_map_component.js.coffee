@@ -14,8 +14,9 @@ window.DynamicMapComponent = React.createClass
     @map.locate({setView: true, maxZoom: 16});
 
     @getData()
-  componentDidUpdate: ->
+  componentDidUpdate: (prevProps, prevState) ->
     @map.invalidateSize()
+    @map.locate({setView: true, maxZoom: 16});
 
   getData: ->
     $.getJSON "/api/crimes", (crimes) =>
