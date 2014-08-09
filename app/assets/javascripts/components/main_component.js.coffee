@@ -35,7 +35,7 @@ window.MainComponent = React.createClass
       when 'map'
         (div {}, [
           (a href: "/", onClick: @navigateLink, "Go To Index"),
-          (MapComponent {})
+          (StaticMapComponent {})
           ])
   render: ->
     (div id: "main-component", [
