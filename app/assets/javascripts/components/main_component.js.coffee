@@ -3,35 +3,44 @@
 class Router extends Backbone.Router
 
   routes:
-    'test': 'test'
+    'map': 'map'
     '(/)': 'index'
     '*notFound': 'notFound'
   notFound: ->
     @trigger 'routing', 'notFound'
   index: ->
     @trigger 'routing', 'index'
-  test: ->
-    @trigger 'routing', 'test'
+  map: ->
+    @trigger 'routing', 'map'
 
 window.MainComponent = React.createClass
+  getInitialState: ->
+    page: 'index'
   componentWillMount: ->
     @router = new Router()
     @router.on 'routing', (action) =>
-      console.log 'routing'
-      console.log action
+      @setState page: action
   navigateLink: (evt) ->
     @router.navigate evt.currentTarget.pathname, trigger: true
     return false
-
+  
+  renderPage: ->
+    switch @state.page
+      when 'index'
+        (div {}, [
+          (a href: "/map", onClick: @navigateLink, "Go To Map"),
+          (div {}, "I'm the Index")
+          ])
+        
+      when 'map'
+        (div {}, [
+          (a href: "/", onClick: @navigateLink, "Go To Index"),
+          (MapComponent {})
+          ])
   render: ->
     (div id: "main-component", [
       (header id: "main-component-header", [
         (h1 {}, "Late Night Safety Kit")
         ]),
-      (ul {}, [
-        (a href: "/test", onClick: @navigateLink, (li {}, "Some options"))
-        (a {}, (li {}, "Some options"))
-        (a {}, (li {}, "Some options"))
-        (a {}, (li {}, "Some options"))        
-        ])
+      @renderPage()
       ])
