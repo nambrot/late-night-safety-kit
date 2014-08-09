@@ -9,6 +9,10 @@ class ApiController < ApplicationController
             render :json => Api.new.mbtastops(params[:lat], params[:lng])
         elsif params[:id] == "cabnumbers"
             render :json => Api.new.cab_numbers
+        elsif params[:id] == "sendtext"
+            render :json => Api.new.sendtext(params[:to], params[:msg])
+        elsif params[:id] == "receivetext"
+            render :json => Api.new.receivetext(params['From'], params['Body']) #TODO: configure twilio to route here
         end
     end
 end

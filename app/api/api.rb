@@ -1,4 +1,4 @@
-require 'httparty'
+require 'twilio-ruby'
 
 class Api
     #get recent crime data
@@ -20,10 +20,10 @@ class Api
         resp = Net::HTTP.get_response(URI.parse(source))
         data = resp.body
         police_stations = Array.new
-        station = Struct.new(:latitude, :longitude, :address, :name)
+        station = Struct.new(:latitude, :longitude, :address)
         JSON.parse(data).each do |item|
             human_address = JSON.parse(item["location"]["human_address"])
-            police_stations.push(station.new(item['location']['latitude'], item['location']['longitude'], human_address["address"], item['name']))
+            police_stations.push(station.new(item['location']['latitude'], item['location']['longitude'], human_address["address"]))
         end
         return police_stations
     end
@@ -44,7 +44,7 @@ class Api
         return stops
     end
 
-    #harcdode a bunch of cab numbers and companies
+    #harcode a bunch of cab numbers and
     def cab_numbers()
         numbers = Array.new
         number = Struct.new(:company, :number)
@@ -54,6 +54,28 @@ class Api
         numbers.push(number.new("617TaxiCab", "617-829-4222"))
         return numbers
     end
+
+    #send text from twilio
+    def sendtext(number, message)
+        fromnum =  "+16174019301"
+        twilio_sid = "ACee7b5e78e45c9f9f4197f3560eead6cb"
+        twilio_token = "d9fb0d0cf2185ff5c4372e150885d471"
+        twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+        twilio_client.account.sms.messages.create(
+            :from => fromnum,
+            :to => number,
+            :body => message
+        )
+        return Array.new
+    end
+
+    #retrieve response from twilio
+    def receivetext(from, body)
+        message = Struct.new(:from, :msg)
+        return JSON.parse(from, body)
+    end
+
+
 
 
 end
