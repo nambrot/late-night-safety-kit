@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require 'sendgrid'
 
 class Api
     #get recent crime data
@@ -66,7 +67,6 @@ class Api
             :to => number,
             :body => message
         )
-        return Array.new
     end
 
     #retrieve response from twilio
@@ -74,6 +74,22 @@ class Api
         message = Struct.new(:from, :msg)
         return JSON.parse(from, body)
     end
+
+    #sends emails using sendgrid
+    def sendemail(email, subject, message)
+        source = "https://api.sendgrid.com/api/mail.send.json"
+        HTTParty.post(
+            source,
+            body: {
+                api_user: 'garidor',
+                to: email,
+                from: "garidor@gmail.com",
+                subject: subject,
+                text: message,
+                api_key: 'password1!'
+            });
+    end
+
 
 
 
