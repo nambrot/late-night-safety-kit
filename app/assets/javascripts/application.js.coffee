@@ -15,10 +15,13 @@
 #= require foundation
 #= require underscore
 #= require backbone
+#= require backbone.localstorage
 #= require react
 #= require_tree .
 
 $ ->
   $(document).foundation()
-  React.renderComponent (MainComponent {}), document.getElementById('container')
+  window.emergency_contacts = new EmergencyContacts()
+  emergency_contacts.fetch()
+  window.main_component = React.renderComponent (MainComponent emergency_contacts: emergency_contacts), document.getElementById('container')
   Backbone.history.start pushState: true, trigger: true

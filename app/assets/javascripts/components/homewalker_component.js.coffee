@@ -2,7 +2,9 @@
 {div, ul, li, a, header, h1, h3, h6, b, table, thead, tbody, tr, th, td, hr, span, input, section, textarea, footer, select, option, label, p} = React.DOM
 
 window.HomeWalkerComponent = React.createClass
-  mixins: [LinkMixin]
+  mixins: [LinkMixin, BackboneMixin]
+  getBackboneObject: ->
+    window.emergency_contacts
   getTitleText: ->
     "HomeWalker"
   render: ->
