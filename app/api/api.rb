@@ -2,7 +2,7 @@ require 'httparty'
 
 class Api
 
-    def boston_data()
+    def crimes()
         source = "https://data.cityofboston.gov/resource/7cdf-6fgx.json"
         resp = Net::HTTP.get_response(URI.parse(source))
         data = resp.body
@@ -13,4 +13,17 @@ class Api
         end
         return crimes
     end
+
+    def police()
+        source = "https://data.cityofboston.gov/resource/23yb-cufe.json"
+        resp = Net::HTTP.get_response(URI.parse(source))
+        data = resp.body
+        police_stations = Array.new
+        station = Struc.new(:latitude, :longitude, :address)
+        result = JSON.parse(data).each do |item|
+            police_stations.push(station.new(item['location']['latitude'], item['location']['longitude'], item['human_address']['address']))
+        end
+        return police_stations
+    end
+
 end
