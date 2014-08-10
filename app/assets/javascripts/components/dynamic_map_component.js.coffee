@@ -9,7 +9,7 @@ window.DynamicMapComponent = React.createClass
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(@map)
-
+    @currentLocationMarker = null
     # get user location
     window.user.on 'location', @setFromUserLocation, this
     @setFromUserLocation()
@@ -18,6 +18,8 @@ window.DynamicMapComponent = React.createClass
     if window.user.currentLocation
       pos = window.user.currentLocation
       @map.setView [pos.coords.latitude, pos.coords.longitude], 15
+      @currentLocationMarker = L.marker [pos.coords.latitude, pos.coords.longitude], icon: L.icon(iconUrl: 'http://openmbta.org/images/map/TrackingDot.png') unless @currentLocationMarker
+      @currentLocationMarker.setLatLng([pos.coords.latitude, pos.coords.longitude]).addTo @map
   componentDidUpdate: (prevProps, prevState) ->
     @map.invalidateSize()
     @map.setView([42.3581,-71.0636], 10)

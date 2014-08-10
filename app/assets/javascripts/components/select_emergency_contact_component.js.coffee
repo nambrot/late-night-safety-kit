@@ -13,6 +13,6 @@ window.SelectEmergencyContactComponent = React.createClass
     @setState selected: selected
     @props.onChange @state.selected if @props.onChange
   render: ->
-    (select onChange: @onChange, ref: "select", value: @state.selected, multiple: "multiple", style: { height: window.emergency_contacts.length * 30 }, window.emergency_contacts.map (emergency_contact) =>
+    (select onChange: @onChange, ref: "select", value: @state.selected, multiple: "multiple", style: { height: window.emergency_contacts.length * 20 + 30 }, window.emergency_contacts.map (emergency_contact) =>
       (option value: emergency_contact.get('id'), "#{emergency_contact.get('name')}: #{emergency_contact.get('number')}")
       )
