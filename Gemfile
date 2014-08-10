@@ -22,6 +22,7 @@ gem 'twilio-ruby'
 gem 'sendgrid'
 gem 'unicorn'
 gem 'clockwork'
+gem 'rails_12factor'
 
 group :development do
   gem 'sqlite3'
