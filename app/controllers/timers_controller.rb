@@ -1,7 +1,7 @@
 class TimersController < ApplicationController
 
     def create()
-        Timer.create(params[:timer])
+        Timer.create(params.require(:timer).permit(:expires_at, :numbers, :user_id))
         render :plain => "Created"
     end
 
@@ -29,7 +29,7 @@ class TimersController < ApplicationController
     end
 
     def destroy()
-        user = Timer.find_by(user_id: params[:user_id])
+        user = Timer.find_by_user_id params[:id]
         user.destroy()
         render :plain => "Destroyed"
     end
