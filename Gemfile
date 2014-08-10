@@ -21,6 +21,8 @@ gem 'leaflet-rails'
 gem 'momentjs-rails'
 gem 'twilio-ruby'
 gem 'sendgrid'
+gem 'unicorn'
+gem 'clockwork'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
