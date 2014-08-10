@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
     def show()
         id = params[:id]
         report = Report.find_by(id: id)
-        render :plain => report.description + " at " + report.latitude.to_s() + ", " + report.longitude.to_s()
+        render :plain => "Crime report from " + report.latitude.to_s() + ", " + report.longitude.to_s() + ": " + report.description
     end
 
     def destroy()
