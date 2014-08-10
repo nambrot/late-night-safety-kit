@@ -27,6 +27,9 @@ window.HomeWalkerComponent = React.createClass
     if @state.selectedEmergencyContacts.length == 0
       alert("Select Emergency Contacts first")
       return
+    if @refs.timerInMinutes.getDOMNode().value <= 0
+      alert("Set a valid timer")
+      return
     $.post "/timers", timer: { expires_at: new Date(new Date() - (-1000 * 60 * @refs.timerInMinutes.getDOMNode().value)), user_id: user.id, numbers: JSON.stringify(@state.selectedEmergencyContacts.map((id) -> emergency_contacts.get(id).attributes )) }
     .success (evt) =>
       localStorage.setItem("timer_expires_at", new Date(new Date() - (-1000 * 60 * @refs.timerInMinutes.getDOMNode().value)))
@@ -70,6 +73,7 @@ window.HomeWalkerComponent = React.createClass
         ])
     else
       (div {}, [
+        (h3 {}, "Timer Stuff"),
         (p {}, "Set a timer and we'll send a message if you dont check back with us"),
         (form className: "new-timer-form", [
           (span {}, "in"),
