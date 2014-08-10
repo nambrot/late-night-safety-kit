@@ -40,7 +40,7 @@ window.DynamicMapComponent = React.createClass
     @crimes = null
     $.getJSON "/api/crimes", (crimes) =>
       @crimes = crimes
-      @_boundForceUpdate()
+      @forceUpdate()
     $.getJSON "/api/police", (policeStations) =>
       for policeStation in policeStations
         L.marker([parseFloat(policeStation.latitude), parseFloat(policeStation.longitude)], icon: L.icon(iconUrl: 'http://icongal.com/gallery/image/255467/car_police_auto_vehicle_transport_train_police_station_music_instrument.png', iconSize: [70, 70]))
