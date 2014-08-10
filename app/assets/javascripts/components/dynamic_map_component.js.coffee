@@ -23,7 +23,7 @@ window.DynamicMapComponent = React.createClass
       for crime in crimes
         L.marker([parseFloat(crime.latitude), parseFloat(crime.longitude)])
         .addTo(@map)
-        .bindPopup("CRIME: #{crime.incident} on #{crime.dayofweek}")
+        .bindPopup("CRIME: #{crime.incident} on a #{crime.dayofweek} at #{crime.time}")
 
     $.getJSON "/api/police", (policeStations) =>
       for policeStation in policeStations
