@@ -85,9 +85,9 @@ window.HomeWalkerComponent = React.createClass
   render: ->
     (div id: 'home-walker-component', className: (if @props.visible then 'visible' else 'not-visible'), [
       (p {}, "Homewalker is your tool to get home safely.  Also set yourself a timer timer and we'll check on you, if you dont check in with us again, we'll send a message to your emergency contacts"),
-      (p className: 'center', (a href: '/emergency_contacts', className: "button", onClick: @navigateLink, "Add Emergency Contacts")),
       (h6 {}, "Select your Emergency Contacts to send to"),
       (SelectEmergencyContactComponent onChange: @onSelectEmergencyContactChange),
+      (p className: 'center', (a href: '/emergency_contacts', className: "button", onClick: @navigateLink, "Add Emergency Contacts")),
       @renderTimerComponent()
       (h3 {}, "Real Time Tracking")
       (p {}, ["Send your friends and family a realtime tracking link so that they can check on you. ", (a href: "#{window.location.origin}/tracks/#{user.id}", "#{window.location.origin}/tracks/#{user.id}")]),
