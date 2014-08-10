@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810015747) do
+ActiveRecord::Schema.define(version: 20140810143320) do
 
   create_table "reports", force: true do |t|
-    t.binary   "image"
+    t.string   "image"
     t.string   "description"
     t.float    "latitude"
     t.float    "longitude"
