@@ -44,5 +44,6 @@ window.MainComponent = React.createClass
         (ReportComponent visible: (@state.page is 'report'), ref: 'report'),
         (HomeWalkerComponent visible: (@state.page is 'homewalker'), ref: 'homewalker'),
         (EmergencyContactsComponent visible: (@state.page is 'emergency_contacts'), ref: 'emergency_contacts'),
-        (AddContactsComponent visible: (@state.page is 'add_contacts'), ref: 'add_contacts')
+        (AddContactsComponent visible: (@state.page is 'add_contacts'), ref: 'add_contacts'),
+        (AdditionalResourcesComponent visible: (@state.page is 'additional_resources'), ref: 'additional_resources')
         ]))
