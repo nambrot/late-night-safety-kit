@@ -17,7 +17,11 @@
 #= require backbone
 #= require backbone.localstorage
 #= require react
-#= require_tree .
+#= require backbone_mixin
+#= require link_mixin
+#= require_tree ./models
+#= require_tree ./components
+
 
 $ ->
   $(document).foundation()

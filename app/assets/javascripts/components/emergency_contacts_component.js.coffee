@@ -6,4 +6,5 @@ window.EmergencyContactsComponent = React.createClass
   render: ->
     (div id: 'emergency-contacts-component', className: (if @props.visible then 'visible' else 'not-visible'), [
       (p {}, "Emergency Contacts")
+      (a href: "/add_contacts", onClick: @navigateLink, (li {}, "HomeWalker (TM)"))
       ])

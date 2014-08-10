@@ -1,0 +1,8 @@
+<h1>Show Track</h1>
+<div id="map" style="width: 100%; height: 100%; position: fixed"></div>
+<%= javascript_include_tag "tracks" %>
+<script>
+  $(function(){
+    initTrack("<%= params[:id] %>");  
+  })
+</script>
