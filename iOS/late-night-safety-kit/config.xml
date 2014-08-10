@@ -8,7 +8,7 @@
         Apache Cordova Team
     </author>
     <access origin="*" />
-    <content src="http://localhost:3000/" />
+    <content src="http://late-night-safety-kit.herokuapp.com/" />
     <script src="cordova.js"></script>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
