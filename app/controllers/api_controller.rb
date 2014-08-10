@@ -2,7 +2,7 @@ class ApiController < ApplicationController
 
     def show
         if params[:id] == "crimes"
-            render :json => Api.new.crimes
+            render :file => "api/crimes.json"
         elsif params[:id] == "police"
             render :json => Api.new.police
         elsif params[:id] == "mbtastops"
