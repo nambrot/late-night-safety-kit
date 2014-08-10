@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -21,7 +20,17 @@ gem 'leaflet-rails'
 gem 'momentjs-rails'
 gem 'twilio-ruby'
 gem 'sendgrid'
+gem 'unicorn'
+gem 'clockwork'
+gem 'rails_12factor'
 
+group :development do
+  gem 'sqlite3'
+end
+
+group :prodution do
+  gem 'pg'
+end
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

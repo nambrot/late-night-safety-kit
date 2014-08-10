@@ -19,6 +19,7 @@
 #= require react
 #= require backbone_mixin
 #= require link_mixin
+#= require moment
 #= require_tree ./models
 #= require_tree ./components
 
