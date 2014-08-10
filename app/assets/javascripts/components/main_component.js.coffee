@@ -42,6 +42,7 @@ window.MainComponent = React.createClass
         (IndexComponent visible: (@state.page is 'index'), ref: 'index'),
         (DynamicMapComponent visible: (@state.page is 'map'), ref: 'map'),
         (ReportComponent visible: (@state.page is 'report'), ref: 'report'),
-        (HomeWalkerComponent visible: (@state.page is 'homewalker'), ref: 'homewalker')
-        (EmergencyContactsComponent visible: (@state.page is 'emergency_contacts'), ref: 'emergency_contacts')
+        (HomeWalkerComponent visible: (@state.page is 'homewalker'), ref: 'homewalker'),
+        (EmergencyContactsComponent visible: (@state.page is 'emergency_contacts'), ref: 'emergency_contacts'),
+        (AddContactsComponent visible: (@state.page is 'add_contacts'), ref: 'add_contacts')
         ]))
