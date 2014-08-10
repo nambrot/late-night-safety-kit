@@ -25,6 +25,10 @@ window.AdditionalResourcesComponent = React.createClass
         (li {}, "Boston Cab Association 617-536-320")  
         (li {}, "ITOA Cab Associates 617-825-4000")  
         (li {}, "617TaxiCab 617-829-4222")          
+        ]),
+      (h3 className: 'subheader', "Escort Services"),
+      (ul {}, [
+        (li {}, "BU Escort Service 617-353-4877")
         ])
       ])
 
