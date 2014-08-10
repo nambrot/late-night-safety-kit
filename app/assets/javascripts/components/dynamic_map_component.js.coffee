@@ -11,12 +11,17 @@ window.DynamicMapComponent = React.createClass
     }).addTo(@map)
 
     # get user location
-    @map.locate({setView: true, maxZoom: 16});
-
+    window.user.on 'location', @setFromUserLocation, this
+    @setFromUserLocation()
     @getData()
+  setFromUserLocation: ->
+    if window.user.currentLocation
+      pos = window.user.currentLocation
+      @map.setView [pos.coords.latitude, pos.coords.longitude], 15
   componentDidUpdate: (prevProps, prevState) ->
     @map.invalidateSize()
-    @map.locate({setView: true, maxZoom: 16});
+    @map.setView([42.3581,-71.0636], 10)
+    @setFromUserLocation()
 
   getData: ->
     $.getJSON "/api/crimes", (crimes) =>
