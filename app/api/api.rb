@@ -87,9 +87,4 @@ class Api
             }
         );
     end
-
-
-
-
-
 end
