@@ -86,7 +86,7 @@ window.HomeWalkerComponent = React.createClass
       (SelectEmergencyContactComponent onChange: @onSelectEmergencyContactChange),
       @renderTimerComponent()
       (h3 {}, "Real Time Tracking")
-      (p {}, "Send your friends and family a realtime tracking link so that they can check on you."),
+      (p {}, ["Send your friends and family a realtime tracking link so that they can check on you. ", (a href: "#{window.location.origin}/tracks/#{user.id}", "#{window.location.origin}/tracks/#{user.id}")]),
       (p className: 'center', (a className: "button center", onClick: @sendRealtimeLink, "Send them Realtime tracking link")),
       
       ])
