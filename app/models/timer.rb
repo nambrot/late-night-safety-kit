@@ -20,7 +20,7 @@ class Timer < ActiveRecord::Base
         puts timer.user_id
         for contact in JSON.parse(timer.numbers)
           if contact['number']
-              Api.new.sendtext(contact['number'], "Help I might be in trouble, please check http://http://late-night-safety-kit.herokuapp.com/tracks/#{timer.user_id} ")
+              Api.new.sendtext(contact['number'], "Help I might be in trouble, please check http://late-night-safety-kit.herokuapp.com/tracks/#{timer.user_id} ")
           elsif contact['email']
               Api.new.sendemail(contact['email'], "help", "Help I'm in trouble!")
           end
