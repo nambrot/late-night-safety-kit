@@ -8,7 +8,7 @@ class @User extends Backbone.Model
     @initiateTrack()
   initiateTrack: ->
     if navigator.geolocation
-      @watchTrack = navigator.geolocation.watchPosition (position) => (@updateLocation(position))
+      @watchTrack = navigator.geolocation.watchPosition @updateLocation.bind(this), null, maximumAge: 1000
   updateLocation: (position) ->
     @currentLocation = position
     @firebaseRef.set location: position
