@@ -24,15 +24,16 @@ window.DynamicMapComponent = React.createClass
     @setFromUserLocation()
 
   getData: ->
+    
     $.getJSON "/api/crimes", (crimes) =>
       for crime in crimes
-        L.marker([parseFloat(crime.latitude), parseFloat(crime.longitude)])
+        L.marker([parseFloat(crime.latitude), parseFloat(crime.longitude)], icon: L.icon(iconUrl: 'https://www.zeroaggressionproject.org/wp-content/uploads/2013/10/crime-icon.png', iconSize: [40, 40]))
         .addTo(@map)
         .bindPopup("CRIME: #{crime.incident} on a #{crime.dayofweek} at #{crime.time}")
 
     $.getJSON "/api/police", (policeStations) =>
       for policeStation in policeStations
-        L.marker([parseFloat(policeStation.latitude), parseFloat(policeStation.longitude)])
+        L.marker([parseFloat(policeStation.latitude), parseFloat(policeStation.longitude)], icon: L.icon(iconUrl: 'http://icongal.com/gallery/image/255467/car_police_auto_vehicle_transport_train_police_station_music_instrument.png', iconSize: [70, 70]))
         .addTo(@map)
         .bindPopup(policeStation.name)
 
