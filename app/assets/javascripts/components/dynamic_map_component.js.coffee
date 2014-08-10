@@ -1,4 +1,6 @@
 #= require leaflet
+#= require leaflet.heatmap
+
 {div, ul, li, a, header, h1, h3, h6, b, table, thead, tbody, tr, th, td, hr, span, input, section, textarea, footer, select, option, label} = React.DOM
 
 window.DynamicMapComponent = React.createClass
@@ -28,13 +30,29 @@ window.DynamicMapComponent = React.createClass
     @setFromUserLocation()
 
   getData: ->
+    #  // The maxZoom states which zoom the markers are fully opaque at -
+    #     // in this case, there are few markers far apart, so we set it low.
+    #     heat = L.heatLayer([], { maxZoom: 12 }).addTo(map);
+
+    # // We're just using a featureLayer to pull marker data from Mapbox -
+    # // this is not added to the map.
+    # var layer = L.mapbox.featureLayer('examples.map-zr0njcqy').on('ready', function() {
+    #     // Zoom the map to the bounds of the markers.
+    #     map.fitBounds(layer.getBounds());
+    #     // Add each marker point to the heatmap.
+    #     layer.eachLayer(function(l) {
+    #         heat.addLatLng(l.getLatLng());
+    #     });
+    # });
+
     
     $.getJSON "/api/crimes", (crimes) =>
+      heat = L.heatLayer([], { maxZoom: 16 }).addTo(@map);
       for crime in crimes
-        L.marker([parseFloat(crime.latitude), parseFloat(crime.longitude)], icon: L.icon(iconUrl: 'https://www.zeroaggressionproject.org/wp-content/uploads/2013/10/crime-icon.png', iconSize: [40, 40]))
-        .addTo(@map)
-        .bindPopup("CRIME: #{crime.incident} on a #{crime.dayofweek} at #{crime.time}")
-
+        # L.marker([parseFloat(crime.latitude), parseFloat(crime.longitude)], icon: L.icon(iconUrl: 'https://www.zeroaggressionproject.org/wp-content/uploads/2013/10/crime-icon.png', iconSize: [40, 40]))
+        # .addTo(@map)
+        # .bindPopup("CRIME: #{crime.incident} on a #{crime.dayofweek} at #{crime.time}")
+        heat.addLatLng [parseFloat(crime.latitude), parseFloat(crime.longitude)]
     $.getJSON "/api/police", (policeStations) =>
       for policeStation in policeStations
         L.marker([parseFloat(policeStation.latitude), parseFloat(policeStation.longitude)], icon: L.icon(iconUrl: 'http://icongal.com/gallery/image/255467/car_police_auto_vehicle_transport_train_police_station_music_instrument.png', iconSize: [70, 70]))
