@@ -3,20 +3,14 @@
 window.ReportComponent = React.createClass
   getTitleText: ->
     "What Happened?"
-  
-  takePicture: ->
-    gUM = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
-    if gUM
-      alert "testing" 
-      gUM({video: true}, ->
-        alert "pooping"
-
-        )
-
-
-
 
   submitForm: ->
+    debugger
+    $.post "/reports", report: { latitude: user.currentLocation.coords.latitude, longitude: user.currentLocation.coords.longitude, image: @refs.file.getDOMNode().value, description: @refs.crimeDescription.getDOMNode().value }
+    .success (evt) =>
+      console.log 'evt'
+    .fail (evt) =>
+      console.log evt
     alert "testing"
     console.log "testing"
 
@@ -25,6 +19,6 @@ window.ReportComponent = React.createClass
       (h1 {}, "Report bad stuff"),
       (div {}, "What should we text the police?"),
       (input type: "text", ref: "crimeDescription"),
-      (input type: "button", value: "Take a picture!", onClick: @takePicture),
+      (input type: "hidden", name: "picture", role:"uploadcare-uploader", ref: "file"),
       (input type: "button", value: "Submit", onClick: @submitForm)
       ])
