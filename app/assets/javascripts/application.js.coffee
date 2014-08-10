@@ -20,6 +20,8 @@
 #= require backbone_mixin
 #= require link_mixin
 #= require moment
+#= require cordova
+#= require cordova_plugins
 #= require_tree ./models
 #= require_tree ./components
 

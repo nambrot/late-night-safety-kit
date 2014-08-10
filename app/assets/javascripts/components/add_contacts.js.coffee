@@ -17,11 +17,11 @@ ContactChoice = React.createClass
 		@setState checked: event.target.checked
 	render: ->
 		value = this.state.value
-		(label {}, [ (span {}, this.props.name.formatted), (input {value: this.props.name.formatted, type: 'checkbox', onChange: @handleChange, checked: @state.checked, className: 'contactName'})])
+		(label {}, this.props.name.formatted, [(input {value: this.props.name.formatted, type: 'checkbox', onChange: @handleChange, checked: @state.checked, className: 'contactName'})])
 
 ContactChoicesList = React.createClass
 	submitNames: ->
-		$.each $('.contactName'), (index, input) =>
+		$.each $('.contactName:checked'), (index, input) =>
 			person = _.find this.props.list, (c) ->
 				c.name.formatted == input['value']
 			emergency_contacts.create name: person.name.formatted, number: person['phoneNumbers'][0]['value']
@@ -29,7 +29,7 @@ ContactChoicesList = React.createClass
 	render: ->
 		choiceNodes = this.props.list.map( (choice) ->
 			ContactChoice name: choice.name)
-		(div { className: "contactList"}, choiceNodes.concat([
+		(div { className: "contactList row"}, choiceNodes.concat([
 			(a href: '/emergency_contacts', className: "button", onClick: @submitNames, "Submit")
 		]))
 
@@ -46,10 +46,10 @@ window.AddContactsComponent = React.createClass
 			field = ["displayName"]
 			navigator.contacts.find(field, (contactList) =>
 				@contactSuccess(contactList))
-	componentDidMount: ->
-		setTimeout @checkContacts.bind(this), 1000  
+	componentDidUpdate: ->
+		@checkContacts()
 	render: ->
-		(div id: 'add-contacts-component', className: (if @props.visible then 'visible' else 'not-visible'), [
+		(div id: 'add-contacts-component', className: (if @props.visible then 'visible' else 'not-visible').concat(' row'), [
 			(h1 {}, "Add Contacts"),
 			(ContactChoicesList list: this.state.contacts)
 			])
