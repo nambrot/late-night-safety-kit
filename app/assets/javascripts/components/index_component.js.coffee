@@ -10,8 +10,8 @@ window.IndexComponent = React.createClass
       (nav id: 'index-page-nav', [
         (ul {}, [
           (a href: "/map", onClick: @navigateLink, (li {}, "Check the Area")),
-          (a href: "/report", onClick: @navigateLink, (li {}, "Something Happened To Me")),
-          (a href: "/homewalker", onClick: @navigateLink, (li {}, "HomeWalker (TM)"))
+          (a href: "/report", onClick: @navigateLink, (li {}, "Report Something")),
+          (a href: "/homewalker", onClick: @navigateLink, (li {}, "Walk me Home"))
           ])
         ])
       ])

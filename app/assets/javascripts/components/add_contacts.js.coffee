@@ -41,13 +41,13 @@ window.AddContactsComponent = React.createClass
 	contactSuccess: (contactList) ->
 			@setState contacts:contactList
 	checkContacts: ->
-		console.log this
 		unless typeof navigator.contacts is "undefined"
 			field = ["displayName"]
 			navigator.contacts.find(field, (contactList) =>
 				@contactSuccess(contactList))
 	componentDidUpdate: ->
-		@checkContacts()
+		unless this.state.contacts.length > 0
+			@checkContacts()
 	render: ->
 		(div id: 'add-contacts-component', className: (if @props.visible then 'visible' else 'not-visible').concat(' row'), [
 			(h1 {}, "Add Contacts"),
