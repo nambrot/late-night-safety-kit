@@ -19,6 +19,8 @@ gem 'binding_of_caller'
 gem 'better_errors'
 gem 'leaflet-rails'
 gem 'momentjs-rails'
+gem 'twilio-ruby'
+gem 'sendgrid'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
