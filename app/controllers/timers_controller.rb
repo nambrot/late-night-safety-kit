@@ -2,7 +2,7 @@ class TimersController < ApplicationController
 
     def create()
         Timer.create(params[:timer])
-        render :plain => "OK"
+        render :plain => "Created"
     end
 
    def index()
@@ -16,10 +16,11 @@ class TimersController < ApplicationController
                     elsif contact['email']
                         api.sendemail(contact['email'], "help", "Help I'm in trouble!")
                     end
+                    self.destroy2(user['user_id'])
                 end
             end
         end
-        render :plain => "OK"
+        render :plain => "Updated"
     end
 
     def show()
@@ -30,6 +31,14 @@ class TimersController < ApplicationController
     def destroy()
         user = Timer.find_by(user_id: params[:user_id])
         user.destroy()
-        render :plain => "OK"
+        render :plain => "Destroyed"
+    end
+
+
+    def destroy2(user_id)
+        user = Timer.find_by(user_id: user_id)
+        user.destroy()
     end
 end
+
+
