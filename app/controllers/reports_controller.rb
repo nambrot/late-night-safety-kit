@@ -2,14 +2,14 @@ class ReportsController < ApplicationController
     def create()
         r = Report.create(params.require(:report).permit(:image, :latitude, :description, :longitude))
         api = Api.new
-        api.sendtext("4125965296", "Reported crime: http://localhost:3000/reports/"+r.id.to_s())
+        api.sendtext("4125965296", "Reported crime: " + request.original_url + "/" +r.id.to_s())
         render :plain => "Created"
     end
 
     def show()
         id = params[:id]
         report = Report.find_by(id: id)
-        render :plain => report.description
+        render :plain => report.description + " at " + report.latitude.to_s() + ", " + report.longitude.to_s()
     end
 
     def destroy()
