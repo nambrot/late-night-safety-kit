@@ -1,4 +1,9 @@
 class ReportsController < ApplicationController
+    layout 'without'
+
+    def index
+        @reports = Report.all
+    end
     def create()
         r = Report.create(params.require(:report).permit(:image, :latitude, :description, :longitude))
         api = Api.new
@@ -6,11 +11,14 @@ class ReportsController < ApplicationController
         render :plain => "Created"
     end
 
-    def show()
-        id = params[:id]
-        report = Report.find_by(id: id)
-        render :plain => "Crime report from " + report.latitude.to_s() + ", " + report.longitude.to_s() + ": " + report.description
+    def show
+        @report = Report.find params[:id]
     end
+    # def show()
+    #     id = params[:id]
+    #     report = Report.find_by(id: id)
+    #     render :plain => "Crime report from " + report.latitude.to_s() + ", " + report.longitude.to_s() + ": " + report.description
+    # end
 
     def destroy()
         user = Report.find_by(id: params[:id])

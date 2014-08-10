@@ -1,0 +1,33 @@
+<h3 class="subheder center">
+  Report
+</h3>
+
+<p>One of our users has filed a report with you. The report was created <%= time_ago_in_words @report.created_at %> ago. We captured the following description:</p>
+
+<blockquote>
+  <%= @report.description %>
+</blockquote>
+
+<p>
+  The user supplied the following image:
+</p>
+
+<img src="http://www.ucarecdn.com/<%= @report.image %>/" alt="">
+<p>
+  We have also captured the location:
+</p>
+
+<div id="map" style='height: 400px;'>
+  
+</div>
+<%= javascript_include_tag "reports" %>
+<script>
+  $(function(){
+    map = L.map($('#map')[0]).setView([<%= @report.latitude %>,<%= @report.longitude %>], 13)
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map)
+    marker = L.marker([<%= @report.latitude %>,<%= @report.longitude %>], {icon: L.icon({iconUrl: 'http://openmbta.org/images/map/TrackingDot.png'})})
+    marker.addTo(map)
+  })
+</script>

@@ -1,0 +1,11 @@
+<h1 class="center">All Reports</h1>
+  
+<% if !@reports.blank? %>
+<ul>
+  <% for report in @reports %>
+    <li><%= link_to report.description, report %></li>
+  <% end %>
+  </ul>
+<% else %>
+  
+<% end %>

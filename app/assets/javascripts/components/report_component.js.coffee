@@ -5,14 +5,11 @@ window.ReportComponent = React.createClass
     "What Happened?"
 
   submitForm: ->
-    debugger
     $.post "/reports", report: { latitude: user.currentLocation.coords.latitude, longitude: user.currentLocation.coords.longitude, image: @refs.file.getDOMNode().value, description: @refs.crimeDescription.getDOMNode().value }
     .success (evt) =>
-      console.log 'evt'
+      alert("")
     .fail (evt) =>
-      console.log evt
-    alert "testing"
-    console.log "testing"
+      alert("Something went wrong with the report")
 
   render: ->
     (div id: 'report-component', className: (if @props.visible then 'visible' else 'not-visible'), [
