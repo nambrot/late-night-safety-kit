@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
     def create()
         r = Report.create(params.require(:report).permit(:image, :latitude, :description, :longitude))
         api = Api.new
-        api.sendemail("connor.mcewen@gmail.com", "Reported crime: " + request.original_url + "/" +r.id.to_s(), report_url(r))
+        api.sendemail("connor.mcewen@gmail.com", "Reported crime: " + request.original_url + "/" +r.id.to_s(), report_url(r) + "\n")
         render :plain => "Created"
     end
 

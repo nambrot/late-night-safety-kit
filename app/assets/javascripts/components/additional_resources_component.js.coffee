@@ -6,7 +6,7 @@ window.AdditionalResourcesComponent = React.createClass
   render: ->
     (div id: 'additional-resources-component', className: (if @props.visible then 'visible' else 'not-visible'), [
       (h3 className: 'subheader', "Donate"),
-      (p {}, "Consider Donating to X and Y")
+      (p {}, "Consider Donating to the Boston Area Rape Crisis Center")
       (p className: 'center', [
         (form action: "https://www.paypal.com/cgi-bin/webscr", method: "post", [
           (input type:"hidden", name:"cmd", value: "_donations"),
@@ -21,14 +21,14 @@ window.AdditionalResourcesComponent = React.createClass
         ]),
       (h3 className: 'subheader', "Cab Numbers"),
       (ul {}, [
-        (li {}, "Metro Cab 617-782-5500")
-        (li {}, "Boston Cab Association 617-536-320")  
-        (li {}, "ITOA Cab Associates 617-825-4000")  
-        (li {}, "617TaxiCab 617-829-4222")          
+        (li {}, "Metro Cab (617) 782-5500")
+        (li {}, "Boston Cab Association (617) 536-320")  
+        (li {}, "ITOA Cab Associates (617) 825-4000")  
+        (li {}, "617TaxiCab (617) 829-4222")          
         ]),
       (h3 className: 'subheader', "Escort Services"),
       (ul {}, [
-        (li {}, "BU Escort Service 617-353-4877")
+        (li {}, "BU Escort Service (617) 353-4877")
         ])
       ])
 
