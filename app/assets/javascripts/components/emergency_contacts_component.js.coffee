@@ -19,10 +19,10 @@ window.EmergencyContactsComponent = React.createClass
         )
       (p className: 'center', (a href: "/add_contacts", onClick: @navigateLink, className: "button", "Add Contacts from Address Book")),
       (form {},[
-        (h3 {}, "Add Addtional Emergency Contact")
+        (h3 {}, "Add Additional Emergency Contact")
         (label className: 'small-12 columns', (input ref: "name", type: 'text', placeholder: "Name")),
         (label className: 'small-12 columns', (input ref: "number", type: 'text', placeholder: "Number")),
         (p className: 'center', (a href: "/add_contacts", onClick: @addEmergencyContact, className: "button", "Add Emergency Contact"))
         ])
-      
+
       ])
